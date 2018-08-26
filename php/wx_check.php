@@ -1,9 +1,12 @@
 <?php
 
-$signature = $_GET["signature"];
-$timestamp = $_GET["timestamp"];
-$nonce = $_GET["nonce"];
-$echostr = $_GET["echostr"];
+include_once "data/verify_data.php";
+
+
+$signature = _GET["signature"];
+$timestamp = _GET["timestamp"];
+$nonce = _GET["nonce"];
+$echostr = _GET["echostr"];
 
 if (checkSignature($signature, $timestamp, $nonce)) {
 	echo $echostr;
@@ -11,7 +14,7 @@ if (checkSignature($signature, $timestamp, $nonce)) {
 	echo "";
 };
 
-private function checkSignature($signature, $timestamp, $nonce)
+function checkSignature($signature, $timestamp, $nonce)
 {
 	$tmpArr = array(VerifyData::$TOKEN, $timestamp, $nonce);
 	sort($tmpArr, SORT_STRING);
