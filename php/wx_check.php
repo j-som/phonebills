@@ -1,12 +1,12 @@
 <?php
 
-include_once "data/verify_data.php";
+include_once ("data/verify_data.php");
 
 
-$signature = _GET["signature"];
-$timestamp = _GET["timestamp"];
-$nonce = _GET["nonce"];
-$echostr = _GET["echostr"];
+$signature = $_GET["signature"];
+$timestamp = $_GET["timestamp"];
+$nonce = $_GET["nonce"];
+$echostr = $_GET["echostr"];
 
 if (checkSignature($signature, $timestamp, $nonce)) {
 	echo $echostr;
