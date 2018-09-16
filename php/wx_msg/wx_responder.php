@@ -7,7 +7,7 @@ class WxResponder
 	protected $msg;
 	function __construct($msg)
 	{
-		this->msg = $msg
+		$this->msg = $msg
 	}
 
 	public function getRespondStr()
@@ -29,12 +29,12 @@ class TextResponder extends WxResponder
 
 	public function getRespondStr()
 	{
-		$content = this->msg->getProperty("Content");
+		$content = $this->msg->getProperty("Content");
 		// 回应  $respond = answer($content);
 		$respond = "你好，我还不懂怎么回应你";
 		$now = time();
 		$format = "<xml><ToUserName>< ![CDATA[%s] ]></ToUserName> <FromUserName>< ![CDATA[%s] ]></FromUserName><CreateTime>%s</CreateTime><MsgType>< ![CDATA[text] ]></MsgType><Content>< ![CDATA[%s] ]></Content></xml>";
-		return sprintf($format, this->getFromUserName(), this->getToUserName(), $now, $content);
+		return sprintf($format, $this->getFromUserName(), $this->getToUserName(), $now, $content);
 	}
 }
 ?>

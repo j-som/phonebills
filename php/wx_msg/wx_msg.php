@@ -27,54 +27,54 @@ class WxMsg
 
 	function __construct($content)
 	{
-		this->raw_data = $content;
-		this->xml_tree = new DOMDocument();
-		this->xml_tree->loadXML($content);
-		this->msg_type = $xml_tree->getElementsByTagName('MsgType');
-		this->to_user_name = $xml_tree->getElementsByTagName('ToUserName');
-		this->from_user_name = $xml_tree->getElementsByTagName('FromUserName');
-		this->create_time = $xml_tree->getElementsByTagName('CreateTime');
-		this->msg_id = $xml_tree->getElementsByTagName('MsgId');
+		$this->raw_data = $content;
+		$this->xml_tree = new DOMDocument();
+		$this->xml_tree->loadXML($content);
+		$this->msg_type = $xml_tree->getElementsByTagName('MsgType');
+		$this->to_user_name = $xml_tree->getElementsByTagName('ToUserName');
+		$this->from_user_name = $xml_tree->getElementsByTagName('FromUserName');
+		$this->create_time = $xml_tree->getElementsByTagName('CreateTime');
+		$this->msg_id = $xml_tree->getElementsByTagName('MsgId');
 	}
 
 	public function getId()
 	{
-		return this->msg_id;
+		return $this->msg_id;
 	}
 
 	public function getType()
 	{
-		return this->msg_type;
+		return $this->msg_type;
 	}
 
 	public function getToUserName()
 	{
-		return this->to_user_name;
+		return $this->to_user_name;
 	}
 
 	public function getFromUserName() ->
 	{
-		return this->from_user_name;
+		return $this->from_user_name;
 	}
 
 	public function getCreateTime()
 	{
-		return this->create_time;
+		return $this->create_time;
 	}
 
 	public function getProperty($name)
 	{
-		return this->xml_tree->getElementsByTagName($name);
+		return $this->xml_tree->getElementsByTagName($name);
 	}
 
 	public function getResponder()
 	{
-		switch (this->msg_type) {
+		switch ($this->msg_type) {
 			case 'text':
-				return new TextResponder(this);
+				return new TextResponder($this);
 			
 			default:
-				return new WxResponder(this);
+				return new WxResponder($this);
 		}
 	}
 
