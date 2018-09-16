@@ -33,7 +33,7 @@ class TextResponder extends WxResponder
 	{
 		error_log("TextResponder getRespondStr");
 		$content = $this->msg->getProperty("Content");
-		$respond = tuling_answer($content);
+		$respond = $this->tuling_answer($content);
 		$now = time();
 		$format = "<xml>
  <ToUserName><![CDATA[%s]]></ToUserName>
