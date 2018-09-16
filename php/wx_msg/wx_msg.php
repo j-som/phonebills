@@ -21,7 +21,6 @@ class WxMsg
 	private $to_user_name;
 	private $from_user_name;
 	private $create_time;
-	private $msg_id;
 	private $xml_tree;
 
 	function __construct($content)
@@ -33,12 +32,6 @@ class WxMsg
 		$this->to_user_name = $this->xml_tree->getElementsByTagName('ToUserName')->item(0)->nodeValue;
 		$this->from_user_name = $this->xml_tree->getElementsByTagName('FromUserName')->item(0)->nodeValue;
 		$this->create_time = $this->xml_tree->getElementsByTagName('CreateTime')->item(0)->nodeValue;
-		$this->msg_id = $this->xml_tree->getElementsByTagName('MsgId')->item(0)->nodeValue;
-	}
-
-	public function getId()
-	{
-		return $this->msg_id;
 	}
 
 	public function getType()
