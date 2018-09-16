@@ -30,11 +30,11 @@ class WxMsg
 		$this->raw_data = $content;
 		$this->xml_tree = new DOMDocument();
 		$this->xml_tree->loadXML($content);
-		$this->msg_type = $xml_tree->getElementsByTagName('MsgType');
-		$this->to_user_name = $xml_tree->getElementsByTagName('ToUserName');
-		$this->from_user_name = $xml_tree->getElementsByTagName('FromUserName');
-		$this->create_time = $xml_tree->getElementsByTagName('CreateTime');
-		$this->msg_id = $xml_tree->getElementsByTagName('MsgId');
+		$this->msg_type = $this->xml_tree->getElementsByTagName('MsgType');
+		$this->to_user_name = $this->xml_tree->getElementsByTagName('ToUserName');
+		$this->from_user_name = $this->xml_tree->getElementsByTagName('FromUserName');
+		$this->create_time = $this->xml_tree->getElementsByTagName('CreateTime');
+		$this->msg_id = $this->xml_tree->getElementsByTagName('MsgId');
 	}
 
 	public function getId()
