@@ -22,8 +22,7 @@ class WxMsg
 	private $from_user_name;
 	private $create_time;
 	private $msg_id;
-
-	protected $xml_tree;
+	private $xml_tree;
 
 	function __construct($content)
 	{

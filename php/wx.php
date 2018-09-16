@@ -6,7 +6,7 @@ include_once ("wx_msg/wx_msg.php");
 $signature = $_GET["signature"];
 $timestamp = $_GET["timestamp"];
 $nonce = $_GET["nonce"];
-$echostr = $_GET["echostr"];
+// $echostr = $_GET["echostr"];
 $tmpArr = array(VerifyData::$TOKEN, $timestamp, $nonce);
 sort($tmpArr, SORT_STRING);
 $tmpStr = implode( $tmpArr );
@@ -17,7 +17,7 @@ if ($signature == $tmpStr) {
 	$res = $msg->getResponder();
 	$ret = $res->getRespondStr();
 	echo $ret;
-	echo $echostr;
+	// echo $echostr;
 } else{
 	echo "error";
 };
