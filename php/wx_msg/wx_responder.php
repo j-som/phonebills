@@ -61,7 +61,19 @@ class TextResponder extends WxResponder
 	{
 		$apr_url = "http://openapi.tuling123.com/openapi/api/v2";
 		$key = "edb252291251783d7e2d0d51d7b06704";
-		$json = json_encode(array(
+		// $json = json_encode(array(
+		// 	'reqType' => 0, 
+		// 	'perception' => array(
+		// 		'inputText' => array(
+		// 			'text' => $msg
+		// 		)
+		// 	),
+		// 	'userInfo' => array(
+		// 		'apiKey' => $key,
+		// 		'userId' => $this->msg->getToUserName()
+		// 	)
+		// ));
+		$data = array(
 			'reqType' => 0, 
 			'perception' => array(
 				'inputText' => array(
@@ -72,8 +84,8 @@ class TextResponder extends WxResponder
 				'apiKey' => $key,
 				'userId' => $this->msg->getToUserName()
 			)
-		));
-		$post_data = http_build_query($json);
+		);
+		$post_data = http_build_query($data);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apr_url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
