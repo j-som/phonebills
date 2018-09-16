@@ -13,6 +13,7 @@
  */
 
 include_once 'wx_responder.php';
+include_once 'text_responder.php';
 
 class WxMsg
 {
