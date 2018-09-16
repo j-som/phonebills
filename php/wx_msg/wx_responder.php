@@ -73,14 +73,16 @@ class TextResponder extends WxResponder
 				'userId' => "xskj"
 			)
 		));
-		// $post_data = http_build_query($json);
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_URL, $apr_url);
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		// curl_setopt($ch, CURLOPT_POST, 1);
-		// curl_setopt($ch, CURLOPT_POSTFLELDS, $post_data);
-		// $data = curl_exec($ch);
-		return $json;
+		$post_data = http_build_query($json);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $apr_url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
+		$data = curl_exec($ch);
+		return $data;
 	}
 }
 ?>
