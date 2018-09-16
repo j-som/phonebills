@@ -82,7 +82,7 @@ class TextResponder extends WxResponder
 			),
 			'userInfo' => array(
 				'apiKey' => $key,
-				'userId' => "wechat-robot"
+				'userId' => $this->msg->getToUserName()
 			)
 		);
 		// $post_data = http_build_query($data);
