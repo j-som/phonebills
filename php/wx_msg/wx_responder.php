@@ -37,7 +37,7 @@ class TextResponder extends WxResponder
 		$respond = "你好，我还不懂怎么回应你";
 		$now = time();
 		$format = "<xml><ToUserName>< ![CDATA[%s] ]></ToUserName> <FromUserName>< ![CDATA[%s] ]></FromUserName><CreateTime>%s</CreateTime><MsgType>< ![CDATA[text] ]></MsgType><Content>< ![CDATA[%s] ]></Content></xml>";
-		return sprintf($format, $this->getFromUserName(), $this->getToUserName(), $now, $content);
+		return sprintf($format, $this->msg->getFromUserName(), $this->msg->getToUserName(), $now, $content);
 	}
 }
 ?>
