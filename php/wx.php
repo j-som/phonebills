@@ -16,6 +16,7 @@ if ($signature == $tmpStr) {
 	$msg = new WxMsg($post_data);
 	$res = $msg->getResponder();
 	$ret = $res->getRespondStr();
+	error_log($ret);
 	echo $ret;
 	// echo $echostr;
 } else{

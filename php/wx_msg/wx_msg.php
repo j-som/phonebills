@@ -26,7 +26,6 @@ class WxMsg
 
 	function __construct($content)
 	{
-		error_log($content, 0);
 		$this->raw_data = $content;
 		$this->xml_tree = new DOMDocument();
 		$this->xml_tree->loadXML($content);
