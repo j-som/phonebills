@@ -29,11 +29,11 @@ class WxMsg
 		$this->raw_data = $content;
 		$this->xml_tree = new DOMDocument();
 		$this->xml_tree->loadXML($content);
-		$this->msg_type = $this->xml_tree->getElementsByTagName('MsgType');
-		$this->to_user_name = $this->xml_tree->getElementsByTagName('ToUserName');
-		$this->from_user_name = $this->xml_tree->getElementsByTagName('FromUserName');
-		$this->create_time = $this->xml_tree->getElementsByTagName('CreateTime');
-		$this->msg_id = $this->xml_tree->getElementsByTagName('MsgId');
+		$this->msg_type = $this->xml_tree->getElementsByTagName('MsgType')->item(0)->nodeValue;
+		$this->to_user_name = $this->xml_tree->getElementsByTagName('ToUserName')->item(0)->nodeValue;
+		$this->from_user_name = $this->xml_tree->getElementsByTagName('FromUserName')->item(0)->nodeValue;
+		$this->create_time = $this->xml_tree->getElementsByTagName('CreateTime')->item(0)->nodeValue;
+		$this->msg_id = $this->xml_tree->getElementsByTagName('MsgId')->item(0)->nodeValue;
 	}
 
 	public function getId()
@@ -63,13 +63,17 @@ class WxMsg
 
 	public function getProperty($name)
 	{
-		return $this->xml_tree->getElementsByTagName($name);
+		$v = $this->xml_tree->getElementsByTagName($name);
+		if ($v) {
+			return $v->item(0)->nodeValue;
+		}else{
+			return null;
+		}
 	}
 
 	public function getResponder()
 	{
-		error_log(sprintf("%s", $this->msg_type), 0);
-		switch ($this->msg_type) {
+		switch ($this->getType()) {
 			case "text":
 				return new TextResponder($this);
 			

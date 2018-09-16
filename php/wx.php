@@ -6,19 +6,22 @@ include_once ("wx_msg/wx_msg.php");
 $signature = $_GET["signature"];
 $timestamp = $_GET["timestamp"];
 $nonce = $_GET["nonce"];
-// $echostr = $_GET["echostr"];
+$echostr = $_GET["echostr"];
 $tmpArr = array(VerifyData::$TOKEN, $timestamp, $nonce);
 sort($tmpArr, SORT_STRING);
 $tmpStr = implode( $tmpArr );
 $tmpStr = sha1( $tmpStr );
 if ($signature == $tmpStr) {
-	$post_data = file_get_contents("php://input");
-	$msg = new WxMsg($post_data);
-	$res = $msg->getResponder();
-	$ret = $res->getRespondStr();
-	error_log($ret);
-	echo $ret;
-	// echo $echostr;
+	if (isset($_GET["echostr"])) {
+		echo $_GET["echostr"];
+	}else{
+		$post_data = file_get_contents("php://input");
+		$msg = new WxMsg($post_data);
+		$res = $msg->getResponder();
+		$ret = $res->getRespondStr();
+		error_log($ret);
+		echo $ret;
+	}
 } else{
 	echo "error";
 };
