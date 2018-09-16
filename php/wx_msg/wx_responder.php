@@ -7,7 +7,6 @@ class WxResponder
 	protected $msg;
 	function __construct($msg)
 	{
-		error_log("WxResponder init");
 		$this->msg = $msg;
 	}
 
@@ -25,13 +24,11 @@ class TextResponder extends WxResponder
 {
 	function __construct($msg)
 	{
-		error_log("TextResponder init");
 		parent::__construct($msg);
 	}
 
 	public function getRespondStr()
 	{
-		error_log("TextResponder getRespondStr");
 		$content = $this->msg->getProperty("Content");
 		$respond = $this->tuling_answer($content);
 		$now = time();
