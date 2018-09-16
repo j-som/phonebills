@@ -81,8 +81,20 @@ class TextResponder extends WxResponder
 		// {"emotion":{"robotEmotion":{"a":0,"d":0,"emotionId":0,"p":0},"userEmotion":{"a":0,"d":0,"emotionId":0,"p":0}},"intent":{"actionName":"","code":10004,"intentName":""},"results":[{"groupType":0,"resultType":"text","values":{"text":"怎么啦？"}}]}
 		$tuling_back = json_decode($data, true);
 		$code = $tuling_back['intent']['code'];
-		if ($code > 10000) {
-			$text = $tuling_back['results'][0]['values']['text'];
+		$text = "";
+		if (isset($tuling_back['results'])) {
+			$results = $tuling_back['results'];
+			if (is_array($results) && count($results) > 0) {
+				$result = $results[0];
+				if (isset($result['values'])) {
+					$values = $result['values'];
+					if (isset($values['text'])) {
+						$text = $values['text'];
+					}
+				}
+			}
+		}
+		if ($text != "") {
 			return $text;
 		}else{
 			error_log(sprintf("tuling answer error %s", $data));
