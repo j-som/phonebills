@@ -66,12 +66,12 @@ class TextResponder extends WxResponder
 		$text = "";
 		if (isset($tuling_back['results'])) {
 			$results = $tuling_back['results'];
-			if (is_array($results) && count($results) > 0) {
-				$result = $results[0];
+			foreach ($results as $key => $result) {
 				if (isset($result['values'])) {
 					$values = $result['values'];
 					if (isset($values['text'])) {
 						$text = $values['text'];
+						break;
 					}
 				}
 			}
