@@ -81,7 +81,16 @@ class TextResponder extends WxResponder
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
 		$data = curl_exec($ch);
-		return $data;
+		// {"emotion":{"robotEmotion":{"a":0,"d":0,"emotionId":0,"p":0},"userEmotion":{"a":0,"d":0,"emotionId":0,"p":0}},"intent":{"actionName":"","code":10004,"intentName":""},"results":[{"groupType":0,"resultType":"text","values":{"text":"怎么啦？"}}]}
+		$tuling_back = json_decode($data),
+		$code = $tuling_back['intent']['code'];
+		if ($code > 10000) {
+			$text = $tuling_back['results'][0]['values']['text'];
+			return $text;
+		}else{
+			error_log(sprintf("tuling answer error %s", $data));
+			return "emmmmm.....快告诉黄哥我抽风了";
+		}
 	}
 }
 ?>
