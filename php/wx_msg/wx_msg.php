@@ -68,7 +68,6 @@ class WxMsg
 
 	public function getResponder()
 	{
-		error_log("$this->msg_type");
 		switch ($this->msg_type) {
 			case "text":
 				return new TextResponder($this);

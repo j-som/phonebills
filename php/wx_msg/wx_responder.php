@@ -7,6 +7,7 @@ class WxResponder
 	protected $msg;
 	function __construct($msg)
 	{
+		error_log("WxResponder init");
 		$this->msg = $msg;
 	}
 
