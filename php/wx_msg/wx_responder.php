@@ -32,12 +32,18 @@ class TextResponder extends WxResponder
 	public function getRespondStr()
 	{
 		error_log("TextResponder getRespondStr");
-		$content = $this->msg->getProperty("Content");
+		// $content = $this->msg->getProperty("Content");
 		// 回应  $respond = answer($content);
 		$respond = "你好，我还不懂怎么回应你";
 		$now = time();
-		$format = "<xml><ToUserName>< ![CDATA[%s] ]></ToUserName> <FromUserName>< ![CDATA[%s] ]></FromUserName><CreateTime>%s</CreateTime><MsgType>< ![CDATA[text] ]></MsgType><Content>< ![CDATA[%s] ]></Content></xml>";
-		return sprintf($format, $this->msg->getFromUserName(), $this->msg->getToUserName(), $now, $content);
+		$format = "<xml>
+ <ToUserName><![CDATA[%s]]></ToUserName>
+ <FromUserName><![CDATA[%s]]></FromUserName>
+ <CreateTime>%s</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[%s]]></Content>
+ </xml>";
+		return sprintf($format, $this->msg->getFromUserName(), $this->msg->getToUserName(), $now, $respond);
 	}
 }
 ?>
