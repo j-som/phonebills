@@ -52,7 +52,7 @@ class WxMsg
 		return $this->to_user_name;
 	}
 
-	public function getFromUserName() ->
+	public function getFromUserName()
 	{
 		return $this->from_user_name;
 	}
