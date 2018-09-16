@@ -70,21 +70,9 @@ class TextResponder extends WxResponder
 			),
 			'userInfo' => array(
 				'apiKey' => $key,
-				'userId' => $this->msg->getToUserName()
+				'userId' => "2695da7716437c58fe04dc7f211dddf0"
 			)
 		));
-		$data = array(
-			'reqType' => 0, 
-			'perception' => array(
-				'inputText' => array(
-					'text' => $msg
-				)
-			),
-			'userInfo' => array(
-				'apiKey' => $key,
-				'userId' => $this->msg->getToUserName()
-			)
-		);
 		// $post_data = http_build_query($data);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apr_url);
