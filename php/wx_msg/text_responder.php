@@ -1,5 +1,5 @@
 <?php 
-include_once "../tuling123/tuling123.php";
+include_once dirname(__FILE__) . '/../tuling123/tuling123.php';
 /**
  * 文本消息
  */
