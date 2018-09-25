@@ -10,9 +10,9 @@ class WxResponder
 		$this->msg = $msg;
 	}
 
-	public function getRespondStr()
+	public function respond()
 	{
-		return "success";
+		echo "success";
 	}
 }
 ?>

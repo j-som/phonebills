@@ -70,8 +70,8 @@ class WxMsg
 		switch ($this->getType()) {
 			case "text":
 				return new TextResponder($this);
-			
 			default:
+				error_log(sprintf("unknown wx msg %s", $this->raw_data));
 				return new WxResponder($this);
 		}
 	}

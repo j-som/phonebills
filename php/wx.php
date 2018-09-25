@@ -17,8 +17,7 @@ if ($signature == $tmpStr) {
 		$post_data = file_get_contents("php://input");
 		$msg = new WxMsg($post_data);
 		$res = $msg->getResponder();
-		$ret = $res->getRespondStr();
-		echo $ret;
+		$ret = $res->respond();
 	}
 } else{
 	echo "error";
