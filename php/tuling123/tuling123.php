@@ -12,7 +12,7 @@ class Tuling123
 
     function __construct($user_id)
     {
-        $this->user_id = $user_id
+        $this->user_id = $user_id;
     }
 
     public function talk_to_tuling_ai($content)

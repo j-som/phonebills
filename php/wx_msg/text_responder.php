@@ -20,6 +20,7 @@ class TextResponder extends WxResponder
 		switch ($reply_type) {
 			case 'text':
 				$now = time();
+				$respond = $tuling123->get_reply_content();
 				$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
 				$respond_str = sprintf($format, $user_id, $this->msg->getToUserName(), $now, $respond);
 				echo $respond_str;
