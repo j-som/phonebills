@@ -7,7 +7,7 @@ class Tuling123
     private $api_key = "edb252291251783d7e2d0d51d7b06704";
     private $user_id = "";
     private $reply_type;
-    private $reply_content;
+    private $reply_content = "";
 
 
     function __construct($user_id)
@@ -28,7 +28,7 @@ class Tuling123
 
     public function get_reply_content()
     {
-        return $this->$reply_content;
+        return $this->reply_content;
     }
 
     private function get_tuling_ai_reply()
@@ -57,7 +57,6 @@ class Tuling123
         // 需要优化图灵ai返回数据的处理
         $reply_data = json_decode($data, true);
         $code = $reply_data['intent']['code'];
-		$text = "";
 		if (isset($reply_data['results'])) {
 			$results = $reply_data['results'];
 			foreach ($results as $key => $result) {
@@ -65,16 +64,16 @@ class Tuling123
 					$values = $result['values'];
 					if (isset($values['text'])) {
                         $this->reply_type = "text";
-						$this->reply_text = $values['text'];
+						$this->reply_content = $values['text'];
 						break;
 					}
 				}
 			}
 		}
-		if ($text == "") {
+		if ($this->reply_content == "") {
             error_log(sprintf("tuling answer error %s", $data));
             $this->reply_type = "text";
-			$this->reply_text = "emmmmm.....快告诉黄哥我抽风了";
+			$this->reply_content = "emmmmm.....快告诉黄哥我抽风了";
 		}
     }
 }
