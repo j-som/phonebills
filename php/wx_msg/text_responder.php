@@ -22,7 +22,7 @@ class TextResponder extends WxResponder
 				$now = time();
 				$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
 				$respond_str = sprintf($format, $user_id, $this->msg->getToUserName(), $now, $respond);
-				echo $respond_str
+				echo $respond_str;
 				break;
 			
 			default:
