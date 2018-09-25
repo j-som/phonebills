@@ -34,7 +34,6 @@ class Tuling123
     private function get_tuling_ai_reply()
     {
         $apr_url = "http://openapi.tuling123.com/openapi/api/v2";
-        $user_id = $this->msg->getFromUserName();
 		$json = json_encode(array(
 			'reqType' => 0, 
 			'perception' => array(
