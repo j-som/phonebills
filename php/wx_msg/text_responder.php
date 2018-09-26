@@ -13,7 +13,7 @@ class TextResponder extends WxResponder
 	public function respond()
 	{
 		$content = $this->msg->getProperty("Content");
-		$user_id = $this->msg->getFromUserName();
+		$user_id = sprintf("%s", $this->msg->getFromUserName());
 		$tuling123 = new Tuling123($user_id);
 		$tuling123->talk_to_tuling_ai($content);
 		$reply_type = $tuling123->get_reply_type();
