@@ -18,6 +18,7 @@ class TextResponder extends WxResponder
 		$tuling123 = new Tuling123($user_id);
 		$tuling123->talk_to_tuling_ai($content);
 		$reply_type = $tuling123->get_reply_type();
+        error_log(sprintf("tuling answer3 %s", $reply_type));
 		switch ($reply_type) {
 			case 'text':
 				$now = time();
