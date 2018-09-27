@@ -7,7 +7,7 @@ class Tuling123
     private $api_key = "edb252291251783d7e2d0d51d7b06704";
     private $user_id = "";
     private $reply_type;
-    private $reply_content = "";
+    private $reply_content;
 
 
     function __construct($user_id)
@@ -54,7 +54,7 @@ class Tuling123
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         $data = curl_exec($ch);
-        error_log(sprintf("tuling answer error %s", $data));
+        error_log(sprintf("tuling answer %s", $data));
         // 需要优化图灵ai返回数据的处理
         $reply_data = json_decode($data, true);
         $code = $reply_data['intent']['code'];
@@ -71,6 +71,7 @@ class Tuling123
 				}
 			}
 		}
+        error_log(sprintf("tuling answer2 %s", $this->reply_content));
 		if ($this->reply_content == "") {
             error_log(sprintf("tuling answer error %s", $data));
             $this->reply_type = "text";
