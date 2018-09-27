@@ -54,6 +54,7 @@ class Tuling123
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
         $data = curl_exec($ch);
+        error_log(sprintf("tuling answer error %s", $data));
         // 需要优化图灵ai返回数据的处理
         $reply_data = json_decode($data, true);
         $code = $reply_data['intent']['code'];
