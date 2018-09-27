@@ -13,8 +13,8 @@ class TextResponder extends WxResponder
 	public function respond()
 	{
 		$content = $this->msg->getProperty("Content");
-		$user_id = $this->msg->getFromUserName();
-		$user_id = str_replace("_","", $user_id);
+		$wx_user_id = $this->msg->getFromUserName();
+		$user_id = str_replace("_","", $wx_user_id);
 		$tuling123 = new Tuling123($user_id);
 		$tuling123->talk_to_tuling_ai($content);
 		$reply_type = $tuling123->get_reply_type();
@@ -24,7 +24,7 @@ class TextResponder extends WxResponder
 				$now = time();
 				$respond = $tuling123->get_reply_content();
 				$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
-				$respond_str = sprintf($format, $user_id, $this->msg->getToUserName(), $now, $respond);
+				$respond_str = sprintf($format, $wx_user_id, $this->msg->getToUserName(), $now, $respond);
 				echo $respond_str;
 				break;
 			
@@ -32,7 +32,7 @@ class TextResponder extends WxResponder
 				$now = time();
 				$respond = $tuling123->get_reply_content();
 				$format = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
-				$respond_str = sprintf($format, $user_id, $this->msg->getToUserName(), $now, $reply_type);
+				$respond_str = sprintf($format, $wx_user_id, $this->msg->getToUserName(), $now, $reply_type);
 				echo $respond_str;
 				break;
 		}
