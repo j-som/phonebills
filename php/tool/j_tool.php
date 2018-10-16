@@ -1,1 +1,6 @@
-j_tool.php
+<?php 
+function curl_post($url, $data)
+{
+	
+}
+?>

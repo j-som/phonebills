@@ -1,5 +1,8 @@
 <?php 
 foreach ($_POST as $name => $value) { 
-echo "$name: $value<br />"; 
+echo "post $name: $value<br />"; 
+} 
+foreach ($_GET as $name => $value) { 
+echo "get $name: $value<br />"; 
 } 
 ?> 
